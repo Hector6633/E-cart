@@ -1,0 +1,15 @@
+# log files
+*.log
+
+# package files
+*.jar
+
+# compiled java class file
+*.class
+
+# compile python bytecode
+*.py[cod]
+
+#node artifacts file
+migrations
+__pycache__
