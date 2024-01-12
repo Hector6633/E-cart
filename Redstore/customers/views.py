@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 # Create your views here.
-# def example(request):
-#     return render(request, 'example.html')
+def account(request):
+    return render(request, 'account.html')
