@@ -16,18 +16,25 @@
                         <span onclick="register()">Register</span>
                         <hr id="Indicator">
                     </div>
-                    <form id="LoginForm">
-                        <input type="text" placeholder="Username">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Login</button>
+                    <form id="LoginForm" method="POST">
+                        {% csrf_token %}
+                        <input type="text" required name="username" placeholder="Username">
+                        <input type="password" required name="password" placeholder="Password">
+                        <button type="submit" name="login" class="btn">Login</button>
                         <a href="">Forget Password</a>
                     </form>
-
-                    <form id="RegForm">
-                        <input type="text" placeholder="Username">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Register</button>
+                    {% if messages %}
+                    {% for message in messages %}
+                     <h4 class="{{ message_tags }}">{{ message }}</h4>
+                 {% endfor %}
+                   {% endif %}
+                    <form id="RegForm" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="username" required minlenth="3" maxlength="8" placeholder="Username">
+                        <input type="email" name="email" required placeholder="Email">
+                        <input type="text" name="phonenumber" required maxlength="10" placeholder="Phone Number">
+                        <input type="password" name="password" required minlenth="8" maxlength="20" placeholder="Password">
+                        <button type="submit" name="register" class="btn">Register</button>
                     </form>
                 </div>
             </div>
@@ -56,5 +63,14 @@
 
     }
 </script>
+{% if register %}
+ <script>
+    register()
+ </script>
+ {% else %}
+ <script>
+    login()
+ </script>
+{% endif %}
 
 {% endblock form_scripts %}

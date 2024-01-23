@@ -34,7 +34,9 @@
                 <option>S</option>
             </select>
             <input type="number" value="1">
+            {% if user.is_authenticated %}
             <a href="{% url "cart" %}" class="btn">Add To Cart</a>
+            {% endif %}
 
             <h3>Product Details <i class="fa fa-indent"></i></h3>
             <br>
